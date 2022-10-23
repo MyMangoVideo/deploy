@@ -39,44 +39,53 @@ sudo apt install ruby-full -y
 sudo apt install wget
 msg "package installation done."
 
-
+touch nvm.txt
 warn "Step 3: Setting up nvm"
 warn "****************************************************************"
 msg "running nvm..."
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+rm nvm.txt
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-mv .nvm /home/ubuntu
+mv /.nvm /home/ubuntu
 
 cd /home/ubuntu
 sudo chmod -R ubuntu:ubuntu /home/ubuntu
 sorce .nvm/nvm.sh
 msg "nvm installation done..."
 
-
+touch node.txt
 warn "Step 4: Installing nodejs 16.16.0"
 warn "****************************************************************"
 msg "installing nodejs v16.16.0"
 ## install node 16.16.0
 nvm install v16.16.0
 msg "node 16 installation done..."
+rm node.txt
 
+
+touch pm.txt
 warn "Step 5: Installing pm2"
 warn "****************************************************************"
 msg "installing pm2"
 ## install pm2 globally
 npm install pm2@latest -g
+rm pm.txt
 
 
+touch npm.txt
 warn "Step 6: Make sure the npm is of version 6.14.1"
 warn "****************************************************************"
 msg "setting npm to 6.14.1"
 ## revert npm version from latest to 6.14.1
 npm i -g npm@6.14.1
 msg "npm installation done..."
+rm npm.txt
 
+
+touch codedeploy.txt
 warn "Step 7: Installing Code deploy agent"
 warn "****************************************************************"
 msg "installging codedeploy...."
@@ -90,8 +99,11 @@ msg "installing the codedeploy...."
 sudo ./install auto
 
 msg "codedeploy done.."
+rm codedeploy.txt
 
 
+
+touch aws.txt
 warn "Step 8: Installing aws cli"
 warn "****************************************************************"
 msg "installing aws command..."
@@ -102,8 +114,9 @@ rm awscli.zip
 
 msg "installing aws command..."
 sudo ./aws/install
+rm aws.txt
 
-
+rm final.txt
 warn "Step 9: Creating folder and setting up permission"
 warn "****************************************************************"
 msg "creating working folder..."
@@ -118,4 +131,5 @@ fi
 
 sudo chown -R ubuntu:ubuntu /home/ubuntu/api.mymango.video
 
+rm final.txt
 err "process completed...."
