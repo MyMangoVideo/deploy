@@ -43,13 +43,18 @@ msg "package installation done."
 warn "Step 3: Setting up nvm"
 warn "****************************************************************"
 msg "running nvm..."
-wget -P /home/ubuntu https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+mv .nvm /home/ubuntu
 
+cd /home/ubuntu
+sudo chmod -R ubuntu:ubuntu /home/ubuntu
+sorce .nvm/nvm.sh
 msg "nvm installation done..."
+
 
 warn "Step 4: Installing nodejs 16.16.0"
 warn "****************************************************************"
