@@ -43,7 +43,7 @@ msg "package installation done."
 warn "Step 3: Setting up nvm"
 warn "****************************************************************"
 msg "running nvm..."
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+wget -P /home/ubuntu https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
