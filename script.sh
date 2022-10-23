@@ -92,7 +92,7 @@ warn "****************************************************************"
 msg "installing aws command..."
 ## install aws cli so we can install the .env file
 curl  "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscli.zip"
-unzip awscli.zip
+unzip -o awscli.zip
 rm awscli.zip
 
 msg "installing aws command..."
@@ -111,15 +111,6 @@ else
   mkdir ${DIR}
 fi
 
-warn "Step 10: Final setps"
-warn "****************************************************************"
-msg "updating the chown for the current details...."
-sudo chmod -R 0755 /home/ubuntu/api.mymango.video
+sudo chown -R ubuntu:ubuntu /home/ubuntu/api.mymango.video
 
-## make sure the permission are of type ubuntu user
-sudo chown -R ubuntu:ubuntu /home/ubuntu/.nvm || true
-sudo chown -R ubuntu:ubuntu /home/ubuntu/aws || true
-sudo chown -R ubuntu:ubuntu /home/ubuntu/api.mymango.video || true
-
-
-msg "process completed...."
+err "process completed...."
